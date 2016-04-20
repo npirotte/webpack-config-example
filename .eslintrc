@@ -1,0 +1,38 @@
+{
+  "ecmaFeatures": {
+    "modules": true,
+    "experimentalObjectRestSpread": true,
+    "jsx": true
+  },
+  
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true
+  },
+
+  "plugins": [
+     "react"
+  ],
+  
+  "settings": {
+    "react": {
+      "pragma": "React",  // Pragma to use, default to "React" 
+      "version": "15.0" // React version, default to the latest React stable release 
+    }
+  },
+
+  "globals": {
+    "document": false,
+    "navigator": false,
+    "window": false
+  },
+
+  "extends": "standard"
+}

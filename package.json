@@ -1,0 +1,45 @@
+{
+  "name": "webpack-config-example",
+  "version": "1.0.0",
+  "description": "A sample of a strong webpack configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start",
+    "lint": "eslint **/*.js(x?)"
+  },
+  "keywords": [
+    "Webpack",
+    "javascript"
+  ],
+  "author": "Nicolas Pirotte",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.7.6",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "eslint": "^2.8.0",
+    "eslint-config-standard": "^5.1.0",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-standard": "^1.3.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-coverage": "^0.5.5",
+    "karma-es6-shim": "^0.2.3",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-phantomjs-shim": "^1.3.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "react-addons-test-utils": "^15.0.1",
+    "webpack": "^1.13.0",
+    "webpack-config": "^4.0.0"
+  },
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
+  }
+}
