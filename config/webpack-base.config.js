@@ -20,6 +20,13 @@ module.exports = new WebpackConfig().merge({
     new ExtractTextPlugin('app.css', { allChunks: true })
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.js(x?)$/,
+        exclude: /node_modules/,
+        loaders: ['eslint']
+      }
+    ],
     loaders: [
       {
         test: /\.js(x?)$/,
