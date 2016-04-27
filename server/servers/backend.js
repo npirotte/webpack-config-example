@@ -1,12 +1,33 @@
 const express = require('express')
-var expressRestResource = require('express-rest-resource')
-var nedb = require('nedb')
+const expressRestResource = require('express-rest-generator')
+const nedb = require('nedb')
 
+/**
+ * Create an api mock server and lift it on the given port
+ * @param {number} PORT - the port on whish lift the server
+ */
 module.exports = (PORT) => {
-  const app = express()
-  const users = new nedb() // eslint-disable-line
+  if (!PORT) {
+    throw new Error('PORT and API_PORT must be set !')
+  }
 
-  app.use('/person', expressRestResource({db: users}))
+  const app = express()
+  const users = new nedb({
+    timestampData: true
+  }) // eslint-disable-line
+
+  const config = {
+    db: users,
+    beforeInsert: function (data) {
+      return data
+    },
+    beforeSend: function (data) {
+      data.id = data._id
+      return data
+    }
+  }
+
+  app.use('/api/person', expressRestResource(config))
 
   app.listen(PORT, () => {
     console.log(`Backend server listening to port ${PORT}`)
