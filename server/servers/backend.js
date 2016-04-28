@@ -1,6 +1,6 @@
 const express = require('express')
 const expressRestResource = require('express-rest-generator')
-const nedb = require('nedb')
+const Nedb = require('nedb')
 
 /**
  * Create an api mock server and lift it on the given port
@@ -12,22 +12,37 @@ module.exports = (PORT) => {
   }
 
   const app = express()
-  const users = new nedb({
-    timestampData: true
-  }) // eslint-disable-line
 
-  const config = {
-    db: users,
-    beforeInsert: function (data) {
-      return data
-    },
-    beforeSend: function (data) {
-      data.id = data._id
-      return data
+  ;(() => {
+    const users = new Nedb({
+      timestampData: true
+    })
+
+    // This is some fake data I insert in our fake database
+    users.insert([
+      {
+        firstName: 'Nicolas',
+        lastName: 'Pirotte'
+      },
+      {
+        firstName: 'Christelle',
+        lastName: 'Adriaens'
+      }
+    ])
+
+    const config = {
+      db: users,
+      beforeInsert: function (data) {
+        return data
+      },
+      beforeSend: function (data) {
+        data.id = data._id
+        return data
+      }
     }
-  }
 
-  app.use('/api/person', expressRestResource(config))
+    app.use('/api/person', expressRestResource(config))
+  })()
 
   app.listen(PORT, () => {
     console.log(`Backend server listening to port ${PORT}`)
